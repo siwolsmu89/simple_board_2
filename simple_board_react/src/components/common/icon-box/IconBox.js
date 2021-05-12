@@ -4,11 +4,10 @@ import Icon from "./icon/Icon";
 export default class IconBox extends Component {
 
     render() {
-        const { icons } = this.props;
+        const {icons} = this.props;
         const iconItems = icons.map(
-            ({link, icon}) => (
+            (icon) => (
                 <Icon
-                    link={link}
                     icon={icon}
                 />
             )
@@ -16,7 +15,7 @@ export default class IconBox extends Component {
 
         return (
             <div className="icon-box">
-                { iconItems }
+                {iconItems}
             </div>
         );
     }

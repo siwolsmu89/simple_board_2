@@ -1,15 +1,17 @@
 import {Component} from "react";
 import {Link} from "react-router-dom";
+import './Icon.css';
 
 export default class Icon extends Component {
     render() {
-        const { link, icon } = this.props;
+        const {icon} = this.props;
 
         return (
-            <Link to={ link }>
+            <Link to={icon.link}>
                 <img
-                    src={ icon.src }
-                    alt={ icon.alt }
+                    className="icon"
+                    src={icon.imgSrc}
+                    alt={icon.imgAlt}
                 />
             </Link>
         );

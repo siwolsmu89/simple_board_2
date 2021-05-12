@@ -1,5 +1,6 @@
 import {Component} from "react";
 import {connect} from "react-redux";
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import BoardApp from "./components/board/BoardApp";
 import UserApp from "./components/user/UserApp";
 import Spinner from "./components/common/spinner/Spinner";
@@ -13,8 +14,14 @@ class App extends Component {
                 <Spinner
                     spinning={ spinning }
                 />
-                <BoardApp />
-                <UserApp />
+                <Router>
+                    <Route path="/board">
+                        <BoardApp />
+                    </Route>
+                    <Route path="/user">
+                        <UserApp />
+                    </Route>
+                </Router>
             </div>
         );
     }
