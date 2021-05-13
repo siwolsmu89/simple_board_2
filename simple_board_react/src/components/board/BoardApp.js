@@ -1,40 +1,64 @@
 import {Component} from "react";
 import {connect} from "react-redux";
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import ListContainer from "./container/list-container/ListContainer";
-import ArticleList from "./article-list/ArticleList";
+import ArticleListTable from "./article-list-table/ArticleListTable";
 import Pagination from "./pagination/Pagination";
+import {getArticles, movePage} from "../../redux/action/axiosActions";
+import EditContainer from "./container/edit-container/EditContainer";
+import DetailContainer from "./container/detail-container/DetailContainer";
+import './BoardApp.css';
 
 class BoardApp extends Component {
+
+    componentDidMount() {
+        this.props.dispatch(getArticles(this.props.pagination));
+    }
+
     render() {
-        const {articles, pagination} = this.props;
+        const {dispatch, articles, pagination} = this.props;
+        console.log("a",articles);
+        console.log("p",pagination);
 
         return (
             <div className="board-app">
-                <Router>
-                    <Route exact path="/board/">
-                        <ListContainer
-                            articleList={
-                                <ArticleList
-                                    articles={[]}
-                                />
-                            }
-                            pagination={
-                                <Pagination
-                                    pagination={{currentPage:1, lastPage:6}}
-                                    movePage={()=>{}}
-                                />
-                            }
+                <Route exact path="/board/">
+                    <ListContainer
+                        articleList={
+                            <ArticleListTable
+                                articles={articles}
+                            />
+                        }
+                        pagination={
+                            <Pagination
+                                pagination={pagination}
+                                movePage={
+                                    pagination => dispatch(movePage(pagination))
+                                }
+                            />
+                        }
+                    />
+                </Route>
+                <Route exact path="/board/edit">
+                    <EditContainer />
+                </Route>
+                <Route
+                    exact path="/board/detail/:no"
+                    render={ (states) =>
+                        <DetailContainer
+                            {...states}
+                            articles={articles}
                         />
-                    </Route>
-                </Router>
+                    }
+                />
             </div>
         );
     }
 }
 
 function selector(state) {
-    return state;
+    const {articles, pagination} = state;
+    return {articles, pagination};
 }
 
 export default connect(selector)(BoardApp);

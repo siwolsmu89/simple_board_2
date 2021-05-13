@@ -1,5 +1,6 @@
 import {Component} from "react";
 import Icon from "./icon/Icon";
+import './IconBox.css';
 
 export default class IconBox extends Component {
 

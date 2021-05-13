@@ -1,0 +1,28 @@
+.article-detail-view {
+    min-height: 430px;
+    margin: 0 30px 30px;
+    width: 90%;
+    background-color: white;
+}
+
+.article-detail-title {
+    width: 80%;
+    padding: 5px;
+    margin: 10px;
+    border-bottom: 2px solid lightgray;
+    outline: none;
+    font-size: 1.5rem;
+    font-weight: bolder;
+}
+
+.article-detail-content {
+    width: 80%;
+    height: 300px;
+    padding: 15px;
+    border: 2px solid lightgray;
+    font-size: 1.25rem;
+    resize: none;
+    outline: none;
+    font-family: Arial, serif;
+    margin-bottom: 20px;
+}

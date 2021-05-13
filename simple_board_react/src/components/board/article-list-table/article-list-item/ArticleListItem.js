@@ -15,7 +15,7 @@ export default class ArticleListItem extends Component {
                 <td className="article-no">{no}</td>
                 <td className="article-title">
                     <Link
-                        to={"/detail/view/" + no}
+                        to={"/board/detail/" + no}
                     >
                         {title}
                     </Link>

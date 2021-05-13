@@ -1,7 +1,7 @@
 import {SPINNING_OFF, SPINNING_ON} from "../action/actions";
 
 export default function spinning(state, action) {
-    const { spinning } = state;
+    const {spinning} = state;
 
     switch (action.type) {
         case SPINNING_ON:

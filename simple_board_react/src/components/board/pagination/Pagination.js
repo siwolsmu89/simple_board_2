@@ -1,4 +1,5 @@
 import {Component} from "react";
+import './Pagination.css';
 
 export default class Pagination extends Component {
     setPagination(pagination, movePage) {
