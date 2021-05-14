@@ -12,7 +12,7 @@ export default class Icon extends Component {
                     className="icon"
                     src={icon.imgSrc}
                     alt={icon.imgAlt}
-                    onClick={icon.onClick}
+                    {...icon.functions}
                 />
             </Link>
         );

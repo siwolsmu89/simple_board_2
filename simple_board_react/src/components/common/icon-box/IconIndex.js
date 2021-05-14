@@ -19,9 +19,11 @@ export const EDIT_ICON = {
 export const DELETE_ICON = {
     imgSrc: '/resources/images/delete-button.png',
     imgAlt: 'Delete Icon',
-    link: '',
-    onClick: function (e) {
-        e.preventDefault();
+    link: '/board',
+    functions: {
+        onClick: function (e) {
+            e.preventDefault();
+        }
     }
 }
 
@@ -35,8 +37,10 @@ export const REFRESH_ICON = {
     imgSrc: '/resources/images/refresh-button.png',
     imgAlt: 'Refresh Icon',
     link: '',
-    onClick: function (e) {
-        e.preventDefault();
+    functions: {
+        onClick: function (e) {
+            e.preventDefault();
+        }
     }
 }
 
@@ -49,8 +53,10 @@ export const LIST_ICON = {
 export const SAVE_ICON = {
     imgSrc: '/resources/images/save-button.png',
     imgAlt: 'Save Icon',
-    link: '',
-    onClick: function (e) {
-        e.preventDefault();
+    link: '/board',
+    functions: {
+        onClick: function (e) {
+            e.preventDefault();
+        }
     }
 }

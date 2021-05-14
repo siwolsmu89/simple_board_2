@@ -9,6 +9,7 @@ export default class ArticleListTable extends Component {
         const articleItems = articles.map(
             (article) => (
                 <ArticleListItem
+                    key={article.no}
                     article={article}
                 />
             )

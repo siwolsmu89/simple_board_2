@@ -3,6 +3,8 @@ import './ArticleEditor.css';
 
 export default class ArticleEditor extends Component {
     render() {
+        const {article} = this.props;
+
         return (
             <div className="article-write">
                 <div className="article-title">
@@ -10,6 +12,7 @@ export default class ArticleEditor extends Component {
                         id="title-input"
                         type="text"
                         placeholder="Write Title Here"
+                        defaultValue={article?.title}
                     />
                 </div>
                 <div className="article-content">
@@ -17,6 +20,7 @@ export default class ArticleEditor extends Component {
                         id="text-input"
                         spellCheck="false"
                         placeholder="Write Content Here"
+                        defaultValue={article?.text}
                     />
                 </div>
             </div>

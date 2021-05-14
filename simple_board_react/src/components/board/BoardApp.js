@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import ListContainer from "./container/list-container/ListContainer";
 import ArticleListTable from "./article-list-table/ArticleListTable";
 import Pagination from "./pagination/Pagination";
-import {getArticles, movePage, updateArticleView} from "../../redux/action/axiosActions";
+import {addNewArticle, editArticle, getArticles, movePage, updateArticleView} from "../../redux/action/axiosActions";
 import EditContainer from "./container/edit-container/EditContainer";
 import DetailContainer from "./container/detail-container/DetailContainer";
 import './BoardApp.css';
@@ -17,8 +17,6 @@ class BoardApp extends Component {
 
     render() {
         const {dispatch, articles, pagination} = this.props;
-        console.log("a",articles);
-        console.log("p",pagination);
 
         return (
             <div className="board-app">
@@ -39,9 +37,17 @@ class BoardApp extends Component {
                         }
                     />
                 </Route>
-                <Route exact path="/board/edit">
-                    <EditContainer />
-                </Route>
+                <Route
+                    exact path="/board/edit/:no?"
+                    render={(states) =>
+                        <EditContainer
+                            {...states}
+                            articles={articles}
+                            addArticle={article => dispatch(addNewArticle(article, pagination))}
+                            editArticle={article => dispatch(editArticle(article, pagination))}
+                        />
+                    }
+                />
                 <Route
                     exact path="/board/detail/:no"
                     render={ (states) =>

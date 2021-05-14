@@ -9,6 +9,7 @@ export default class IconBox extends Component {
         const iconItems = icons.map(
             (icon) => (
                 <Icon
+                    key={icon.imgSrc}
                     icon={icon}
                 />
             )
