@@ -2,6 +2,8 @@ import {Component} from "react";
 import {connect} from "react-redux";
 import {Route} from "react-router-dom";
 import GuestContainer from "./container/guest-container/GuestContainer";
+import RegisterContainer from "./container/register-container/RegisterContainer";
+import UserContainer from "./container/user-container/UserContainer";
 
 class UserApp extends Component {
     render() {
@@ -11,7 +13,10 @@ class UserApp extends Component {
                     <GuestContainer />
                 </Route>
                 <Route exact path="/user/register">
-
+                    <RegisterContainer />
+                </Route>
+                <Route exact path="/user/1">
+                    <UserContainer />
                 </Route>
             </div>
         );

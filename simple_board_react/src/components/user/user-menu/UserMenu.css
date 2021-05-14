@@ -1,0 +1,34 @@
+.user-menu {
+    margin: 0 30px 30px;
+    width: 90%;
+    background-color: white;
+    text-align: center;
+}
+
+.user-menu div {
+    padding-top: 120px;
+}
+
+.user-menu button {
+    width: 350px;
+    height: 70px;
+    font-weight: bolder;
+    font-size: 25px;
+    color: darkgray;
+    border: 2px solid #848484;
+    border-radius: 20px;
+}
+
+.user-menu .user-update button:hover {
+    background-color: #848484;
+    color: white;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+.user-menu .user-exit button:hover {
+    background-color: darkred;
+    color: white;
+    border: 2px solid darkred;
+    cursor: pointer;
+}

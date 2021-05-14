@@ -28,7 +28,7 @@ export const DELETE_ICON = {
 }
 
 export const CANCEL_ICON = {
-    imgSrc: '/resources/images/cancel-button.png',
+    imgSrc: '/resources/images/close-button.png',
     imgAlt: 'Cancel Icon',
     link: '/board'
 }
@@ -77,4 +77,9 @@ export const REGISTER_ICON = {
     imgSrc: '/resources/images/register-button.png',
     imgAlt: 'Register User Icon',
     link: '/user/register'
+}
+
+export const ENTER_ICON = {
+    imgSrc: '/resources/images/enter-button.png',
+    imgAlt: 'Enter Icon'
 }
