@@ -1,0 +1,41 @@
+.login-form {
+    margin: 0 30px 30px;
+    width: 90%;
+    background-color: white;
+    text-align: center;
+}
+
+.login-form div {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
+.login-form input {
+    width: 400px;
+    height: 35px;
+    border: 2px solid #848484;
+}
+
+.login-form input:focus {
+    outline: none;
+    border: 2px solid white;
+    border-bottom: 2px solid #848484;
+}
+
+.login-form input {
+    text-align: center;
+}
+
+.login-form button {
+    width: 350px;
+    height: 40px;
+    background-color: lightgray;
+    color: white;
+    border: 2px solid #848484;
+}
+
+.login-form button:hover {
+    background-color: #848484;
+    border: 2px solid black;
+    cursor: pointer;
+}

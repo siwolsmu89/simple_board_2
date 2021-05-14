@@ -72,3 +72,9 @@ export const GUEST_USER_ICON = {
     imgAlt: 'Guest User Icon',
     link: '/user'
 }
+
+export const REGISTER_ICON = {
+    imgSrc: '/resources/images/register-button.png',
+    imgAlt: 'Register User Icon',
+    link: '/user/register'
+}
