@@ -4,24 +4,21 @@ import {BrowserRouter as Router, Link, Route} from 'react-router-dom';
 import BoardApp from "./components/board/BoardApp";
 import UserApp from "./components/user/UserApp";
 import Spinner from "./components/common/spinner/Spinner";
+import NavigationBar from "./components/common/navigation-bar/NavigationBar";
+import './App.css';
 
 class App extends Component {
     render() {
         const { spinning } = this.props;
 
         return (
-            <div>
+            <div className="simple-board-app">
                 <Spinner
                     spinning={ spinning }
                 />
                 <Router>
                     <Route path="/">
-                        <Link to="/board">
-                            [Board]
-                        </Link>
-                        <Link to="/user">
-                            [User]
-                        </Link>
+                        <NavigationBar/>
                     </Route>
                     <Route exact path="/">
                         <div>

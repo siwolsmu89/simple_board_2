@@ -60,3 +60,15 @@ export const SAVE_ICON = {
         }
     }
 }
+
+export const BOARD_ICON = {
+    imgSrc: '/resources/images/board-button.png',
+    imgAlt: 'Board Icon',
+    link: '/board'
+}
+
+export const GUEST_USER_ICON = {
+    imgSrc: '/resources/images/guest-user.png',
+    imgAlt: 'Guest User Icon',
+    link: '/user'
+}

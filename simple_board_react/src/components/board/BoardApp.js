@@ -7,7 +7,6 @@ import Pagination from "./pagination/Pagination";
 import {addNewArticle, editArticle, getArticles, movePage, updateArticleView} from "../../redux/action/axiosActions";
 import EditContainer from "./container/edit-container/EditContainer";
 import DetailContainer from "./container/detail-container/DetailContainer";
-import './BoardApp.css';
 
 class BoardApp extends Component {
 

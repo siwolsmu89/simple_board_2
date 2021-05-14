@@ -1,0 +1,17 @@
+.navigation-bar {
+    padding: 1rem;
+    border-bottom: 5px dashed #848484;
+}
+
+.navigation-bar .icon-box {
+    text-align: center;
+}
+
+.navigation-bar .icon-box a {
+    margin: 50px;
+}
+
+.navigation-bar .icon-box .icon {
+    width: 50px;
+    border: 5px solid darkgray;
+}
