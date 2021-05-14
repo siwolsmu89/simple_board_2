@@ -9,7 +9,7 @@ export default class ListContainer extends Component {
             <div className="simple-board-container list-container">
                 <section className="icon-box-wrapper">
                     <IconBox
-                        icons={[WRITE_ICON, HOME_ICON]}
+                        icons={[WRITE_ICON]}
                     />
                 </section>
                 <section className="list-table-wrapper">

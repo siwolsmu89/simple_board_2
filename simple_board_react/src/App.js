@@ -6,6 +6,7 @@ import UserApp from "./components/user/UserApp";
 import Spinner from "./components/common/spinner/Spinner";
 import NavigationBar from "./components/common/navigation-bar/NavigationBar";
 import './App.css';
+import Home from "./components/common/home/Home";
 
 class App extends Component {
     render() {
@@ -20,17 +21,17 @@ class App extends Component {
                     <Route path="/">
                         <NavigationBar/>
                     </Route>
-                    <Route exact path="/">
-                        <div>
-                            HOME
-                        </div>
-                    </Route>
-                    <Route path="/board">
-                       <BoardApp />
-                    </Route>
-                    <Route path="/user">
-                       <UserApp />
-                    </Route>
+                    <section className="simple-board-app-body">
+                        <Route exact path="/">
+                            <Home />
+                        </Route>
+                        <Route path="/board">
+                            <BoardApp />
+                        </Route>
+                        <Route path="/user">
+                            <UserApp />
+                        </Route>
+                    </section>
                 </Router>
             </div>
         );

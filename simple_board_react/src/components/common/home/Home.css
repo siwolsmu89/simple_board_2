@@ -1,0 +1,10 @@
+.simple-board-home {
+    padding: 4rem;
+    text-align: center;
+}
+
+.simple-board-home h1 {
+    font-weight: bolder;
+    font-size: 50px;
+    color: #848484;
+}
