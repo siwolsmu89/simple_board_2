@@ -4,7 +4,7 @@ import {Route} from 'react-router-dom';
 import ListContainer from "./container/list-container/ListContainer";
 import ArticleListTable from "./article-list-table/ArticleListTable";
 import Pagination from "./pagination/Pagination";
-import {getArticles, movePage} from "../../redux/action/axiosActions";
+import {getArticles, movePage, updateArticleView} from "../../redux/action/axiosActions";
 import EditContainer from "./container/edit-container/EditContainer";
 import DetailContainer from "./container/detail-container/DetailContainer";
 import './BoardApp.css';
@@ -48,6 +48,9 @@ class BoardApp extends Component {
                         <DetailContainer
                             {...states}
                             articles={articles}
+                            updateViewCount={
+                                no => dispatch(updateArticleView(no))
+                            }
                         />
                     }
                 />

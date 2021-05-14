@@ -4,6 +4,14 @@ import {EDIT_ICON, LIST_ICON} from "../../../common/icon-box/IconIndex";
 import ArticleDetailView from "../../article-detail-view/ArticleDetailView";
 
 export default class DetailContainer extends Component {
+
+    componentDidMount() {
+        const {updateViewCount} = this.props;
+        const {no} = this.props.match.params;
+
+        updateViewCount(Number(no));
+    }
+
     render() {
         const {articles} = this.props;
         const {no} = this.props.match.params;

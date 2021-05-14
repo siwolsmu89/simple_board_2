@@ -50,7 +50,6 @@ export function movePage(pagination) {
 
 export function updateArticleView(no) {
     return function(dispatch) {
-        dispatch(startSpinningAction());
         axios({
             url: '/article/view',
             method: 'post',
@@ -58,8 +57,8 @@ export function updateArticleView(no) {
             data: { no }
         }).then((response) => {
             const updatedArticle = response.data[0];
+            console.log(updatedArticle);
             dispatch(updateArticleViewAction(updatedArticle));
-            dispatch(stopSpinningAction());
         })
     }
 }
