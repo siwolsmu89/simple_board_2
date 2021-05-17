@@ -6,35 +6,45 @@ export const CALCULATE_PAGINATION = 'CALCULATE_PAGINATION';
 export const MOVE_PAGE = 'MOVE_PAGE';
 export const SPINNING_ON = 'SPINNING_ON';
 export const SPINNING_OFF = 'SPINNING_OFF';
+export const MODAL_SHOW = 'MODAL_SHOW';
+export const MODAL_HIDE = 'MODAL_HIDE';
 
 export function calculatePaginationAction(totalCount) {
-    return { type: CALCULATE_PAGINATION, totalCount }
+    return {type: CALCULATE_PAGINATION, totalCount};
 }
 
 export function movePageAction(pagination) {
-    return { type: MOVE_PAGE, pagination }
+    return {type: MOVE_PAGE, pagination};
+}
+
+export function modalShow(modal) {
+    return {type: MODAL_SHOW, modal};
+}
+
+export function modalHide() {
+    return {type: MODAL_HIDE};
 }
 
 export function addArticleAction(article) {
-    return { type: ADD_ARTICLE, article }
+    return {type: ADD_ARTICLE, article};
 }
 
 export function updateArticleAction(article) {
-    return { type: UPDATE_ARTICLE, article }
+    return {type: UPDATE_ARTICLE, article};
 }
 
 export function updateArticleViewAction(article) {
-    return { type: UPDATE_ARTICLE_VIEW, article }
+    return {type: UPDATE_ARTICLE_VIEW, article};
 }
 
 export function getArticlesAction(articles) {
-    return { type: GET_ARTICLES, articles }
+    return {type: GET_ARTICLES, articles};
 }
 
 export function startSpinningAction() {
-    return { type: SPINNING_ON }
+    return {type: SPINNING_ON};
 }
 
 export function stopSpinningAction() {
-    return { type: SPINNING_OFF }
+    return {type: SPINNING_OFF};
 }
