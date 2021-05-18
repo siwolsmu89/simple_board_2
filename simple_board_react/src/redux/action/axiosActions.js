@@ -26,7 +26,7 @@ export function getArticles(pagination) {
         const callback = (response) => {
             dispatch(getArticlesAction(response.data.articles));
             dispatch(calculatePaginationAction(response.data.totalCount));
-        }
+        };
 
         axiosAction(dispatch, axiosParam, callback);
     }
@@ -34,73 +34,99 @@ export function getArticles(pagination) {
 
 export function movePage(pagination) {
     return function (dispatch) {
-        dispatch(startSpinningAction());
-        axios({
+        const axiosParam = {
             url:'/article/list',
             method:'post',
             dataType:'json',
             data: { pagination }
-        }).then(response => {
+        };
+        const callback = (response) => {
             dispatch(getArticlesAction(response.data.articles));
             dispatch(movePageAction(pagination));
-            dispatch(stopSpinningAction());
-        })
+        };
+
+        axiosAction(dispatch, axiosParam, callback);
     }
 }
 
 export function updateArticleView(no) {
     return function(dispatch) {
-        axios({
+        const axiosParam = {
             url: '/article/view',
             method: 'post',
             dataType: 'json',
             data: { no }
-        }).then((response) => {
+        };
+        const callback = (response) => {
             const updatedArticle = response.data[0];
             console.log(updatedArticle);
             dispatch(updateArticleViewAction(updatedArticle));
-        })
+        };
+
+        axiosAction(dispatch, axiosParam, callback);
     }
 }
 
 export function addNewArticle(article, pagination) {
     return function(dispatch) {
-        dispatch(startSpinningAction());
-        axios({
+        const axiosParam = {
             url: '/article/add',
             method: 'post',
             dataType: 'json',
             data: article
-        }).then(() => {
+        };
+        const callback = () => {
             dispatch(getArticles(pagination));
-        });
+        };
+
+        axiosAction(dispatch, axiosParam, callback);
     }
 }
 
 export function deleteArticle(no, pagination) {
     return function(dispatch) {
-        dispatch(startSpinningAction());
-        axios({
+        const axiosParam = {
             url: '/article/delete',
             method: 'post',
             dataType: 'json',
             data: { no }
-        }).then(() => {
+        };
+        const callback = () => {
             dispatch(getArticles(pagination));
-        })
+        };
+
+        axiosAction(dispatch, axiosParam, callback);
     }
 }
 
 export function editArticle(article, pagination) {
     return function(dispatch) {
-        dispatch(startSpinningAction());
-        axios({
+        const axiosParam = {
             url: '/article/edit',
             method: 'post',
             dataType: 'json',
             data: article
-        }).then(() => {
+        };
+        const callback = () => {
             dispatch(getArticles(pagination));
-        });
+        };
+
+        axiosAction(dispatch, axiosParam, callback);
+    }
+}
+
+export function addUser(user) {
+    return function(dispatch) {
+        const axiosParam = {
+            url: '/user/add',
+            method: 'post',
+            dataType: 'json',
+            data: user
+        };
+        const callback = (response) => {
+            alert("added New user :: " + response);
+        }
+
+        axiosAction(dispatch, axiosParam, callback);
     }
 }

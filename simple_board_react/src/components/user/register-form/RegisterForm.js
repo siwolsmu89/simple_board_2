@@ -3,6 +3,22 @@ import './RegisterForm.css';
 
 export default class RegisterForm extends Component {
     render() {
+        const {addUser} = this.props;
+        const addNewUser = function () {
+            console.log("addNew");
+            const userId = document.querySelector("#user-id-input").value;
+            const password = document.querySelector("#user-password-input").value;
+            const passwordCheck = document.querySelector("#user-password-check-input").value;
+
+            if (!userId || !password || password !== passwordCheck) {
+                return false;
+            } else {
+                console.log("addNew 22");
+                addUser({userId, password});
+            }
+        }
+
+
         return (
             <div className="register-form">
                 <div className="user-id">
@@ -27,7 +43,11 @@ export default class RegisterForm extends Component {
                     />
                 </div>
                 <div className="register-form-button">
-                    <button>REGISTER</button>
+                    <button
+                        onClick={() => addNewUser()}
+                    >
+                        REGISTER
+                    </button>
                 </div>
             </div>
         );

@@ -4,7 +4,7 @@ module.exports = () => {
     const userMapper = require('./../mapper/userMapper');
 
     router.post('/add', function(req, res) {
-        console.log("article add", req.body);
+        console.log("user add", req.body);
         const addSql = {
             id: 'addNewUser',
             type: 'insert'
