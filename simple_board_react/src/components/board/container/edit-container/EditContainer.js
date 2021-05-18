@@ -5,7 +5,7 @@ import ArticleEditor from "../../article-editor/ArticleEditor";
 
 export default class EditContainer extends Component {
     render() {
-        const {articles, addArticle, editArticle} = this.props;
+        const {articles, addArticle, editArticle, modalOpen} = this.props;
         const {no} = this.props.match.params;
         const detailArticle = articles.find( article => article.no === Number(no));
 
@@ -14,19 +14,26 @@ export default class EditContainer extends Component {
             functions: {
                 onClick : function (e) {
                     e.preventDefault();
-                    const titleInput = document.querySelector("#title-input");
-                    const textInput = document.querySelector("#text-input");
 
-                    if (!titleInput || !textInput) {
-                        return;
+                    const modal = {
+                        dialog: 'Are you sure to refresh all changes?',
+                        confirmFunction: function () {
+                            const titleInput = document.querySelector("#title-input");
+                            const textInput = document.querySelector("#text-input");
+
+                            if (!titleInput || !textInput) {
+                                return;
+                            }
+                            if (!detailArticle) {
+                                titleInput.value = '';
+                                textInput.value= '';
+                            } else {
+                                titleInput.value = detailArticle.title;
+                                textInput.value = detailArticle.text;
+                            }
+                        }
                     }
-                    if (!detailArticle) {
-                        titleInput.value = '';
-                        textInput.value= '';
-                    } else {
-                        titleInput.value = detailArticle.title;
-                        textInput.value = detailArticle.text;
-                    }
+                    modalOpen(modal);
                 }
             }
         };
@@ -40,7 +47,11 @@ export default class EditContainer extends Component {
                     const text = document.querySelector("#text-input").value;
                     if (!title || !text) {
                         e.preventDefault();
-                        alert("Title or Text is Empty");
+                        const modal = {
+                            dialog: 'Title or Text is Empty.',
+                            type: 'error'
+                        }
+                        modalOpen(modal);
                         return;
                     }
                     if (!detailArticle) {

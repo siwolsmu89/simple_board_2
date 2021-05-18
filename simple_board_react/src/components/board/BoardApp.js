@@ -7,6 +7,7 @@ import Pagination from "./pagination/Pagination";
 import {addNewArticle, editArticle, getArticles, movePage, updateArticleView} from "../../redux/action/axiosActions";
 import EditContainer from "./container/edit-container/EditContainer";
 import DetailContainer from "./container/detail-container/DetailContainer";
+import {modalShow} from "../../redux/action/actions";
 
 class BoardApp extends Component {
 
@@ -44,6 +45,7 @@ class BoardApp extends Component {
                             articles={articles}
                             addArticle={article => dispatch(addNewArticle(article, pagination))}
                             editArticle={article => dispatch(editArticle(article, pagination))}
+                            modalOpen={modal => dispatch(modalShow(modal))}
                         />
                     }
                 />

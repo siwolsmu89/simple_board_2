@@ -17,12 +17,10 @@ class App extends Component {
         return (
             <div className="simple-board-app">
                 <Spinner
-                    spinning={ spinning }
+                    spinning={spinning}
                 />
                 <Modal
-                    isHide={modal.isHide}
-                    dialog={modal.dialog}
-                    confirmFunction={() => modal.confirmFunction}
+                    modal={modal}
                     modalHide={() => dispatch(modalHide())}
                 />
                 <Router>
