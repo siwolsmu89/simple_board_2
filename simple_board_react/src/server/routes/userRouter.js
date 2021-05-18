@@ -1,7 +1,19 @@
 module.exports = () => {
     const express = require('express');
     const router = express.Router();
-    // const userMapper = require('./../mapper/UserMapper');
+    const userMapper = require('./../mapper/userMapper');
+
+    router.post('/add', function(req, res) {
+        console.log("article add", req.body);
+        const addSql = {
+            id: 'addNewUser',
+            type: 'insert'
+        }
+        userMapper(addSql, req.body, (result) => {
+            res.send(result);
+            console.log(result);
+        });
+    });
 
     return router;
 }
