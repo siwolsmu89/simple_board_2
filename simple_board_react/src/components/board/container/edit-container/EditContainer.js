@@ -1,6 +1,6 @@
 import {Component} from "react";
 import IconBox from "../../../common/icon-box/IconBox";
-import {LIST_ICON, REFRESH_ICON, SAVE_ICON, WRITE_ICON} from "../../../common/icon-box/IconIndex";
+import {LIST_ICON, REFRESH_ICON, SAVE_ICON} from "../../../common/icon-box/IconIndex";
 import ArticleEditor from "../../article-editor/ArticleEditor";
 
 export default class EditContainer extends Component {
@@ -40,7 +40,7 @@ export default class EditContainer extends Component {
 
         const saveIcon = {
             ...SAVE_ICON,
-            link: '/board/detail/'+no,
+            link: no ? '/board/detail/'+no : '/board',
             functions: {
                 onClick: function (e) {
                     const title = document.querySelector("#title-input").value;
