@@ -19,12 +19,12 @@ class App extends Component {
                 <Spinner
                     spinning={spinning}
                 />
-                <Modal
-                    modal={modal}
-                    modalHide={() => dispatch(modalHide())}
-                />
                 <Router>
                     <Route path="/">
+                        <Modal
+                            modal={modal}
+                            modalHide={() => dispatch(modalHide())}
+                        />
                         <NavigationBar/>
                     </Route>
                     <section className="simple-board-app-body">

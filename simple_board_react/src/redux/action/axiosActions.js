@@ -1,7 +1,7 @@
 import axios from "axios";
 import {
     calculatePaginationAction,
-    getArticlesAction,
+    getArticlesAction, modalShow,
     movePageAction, startSpinningAction, stopSpinningAction,
     updateArticleViewAction
 } from "./actions";
@@ -124,7 +124,14 @@ export function addUser(user) {
             data: user
         };
         const callback = (response) => {
-            alert("added New user :: " + response);
+            const modal = {
+                dialog: response.data.dialog,
+                type: response.data.result
+            }
+            if (response.data.result === 'success') {
+                modal.link = "/";
+            }
+            dispatch(modalShow(modal));
         }
 
         axiosAction(dispatch, axiosParam, callback);
