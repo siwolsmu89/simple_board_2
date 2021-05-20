@@ -30,8 +30,12 @@ export default class RegisterContainer extends Component {
                 }
             }
         };
+        const cancelIcon = {
+            ...CANCEL_ICON,
+            link: '/user'
+        };
 
-        const icons = [refreshIcon, CANCEL_ICON];
+        const icons = [refreshIcon, cancelIcon];
 
         return (
             <div className="simple-board-container register-container">
