@@ -1,13 +1,37 @@
 import {Component} from "react";
 import IconBox from "../../../common/icon-box/IconBox";
-import RegisterForm from "../../register-form/RegisterForm";
 import {CANCEL_ICON, REFRESH_ICON} from "../../../common/icon-box/IconIndex";
-import {addUser} from "../../../../redux/action/axiosActions";
 
 export default class RegisterContainer extends Component {
     render() {
-        const {registerForm} = this.props;
-        const icons = [REFRESH_ICON, CANCEL_ICON];
+        const {registerForm, modalOpen} = this.props;
+        const refreshIcon = {
+            ...REFRESH_ICON,
+            functions: {
+                onClick : function (e) {
+                    e.preventDefault();
+
+                    const modal = {
+                        dialog: 'Are you sure to refresh all changes?',
+                        confirmFunction: function () {
+                            const inputs = document.querySelectorAll("input");
+                            for (const input of inputs) {
+                                input.value = '';
+                            }
+                            document.querySelector("#user-password-check-input").setAttribute("disabled", "disabled");
+
+                            const inputErrors = document.querySelectorAll(".input-status");
+                            for (const inputError of inputErrors) {
+                                inputError.textContent = null;
+                            }
+                        }
+                    }
+                    modalOpen(modal);
+                }
+            }
+        };
+
+        const icons = [refreshIcon, CANCEL_ICON];
 
         return (
             <div className="simple-board-container register-container">

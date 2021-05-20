@@ -6,6 +6,7 @@ import RegisterContainer from "./container/register-container/RegisterContainer"
 import UserContainer from "./container/user-container/UserContainer";
 import {addUser} from "../../redux/action/axiosActions";
 import RegisterForm from "./register-form/RegisterForm";
+import {modalShow} from "../../redux/action/actions";
 
 class UserApp extends Component {
     render() {
@@ -18,6 +19,7 @@ class UserApp extends Component {
                 </Route>
                 <Route exact path="/user/register">
                     <RegisterContainer
+                        modalOpen={modal => dispatch(modalShow(modal))}
                         registerForm={
                             <RegisterForm
                                 addUser={(user)=>dispatch(addUser(user))}

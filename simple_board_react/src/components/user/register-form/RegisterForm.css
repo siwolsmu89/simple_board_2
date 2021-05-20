@@ -26,6 +26,10 @@
     text-align: center;
 }
 
+.register-form input:disabled {
+    background-color: #848484;
+}
+
 .register-form button {
     width: 350px;
     height: 40px;
@@ -40,20 +44,20 @@
     cursor: pointer;
 }
 
-.register-form .input-error {
+.register-form .input-status {
     color: black;
     font-size: 12px;
     display: block;
     min-height: 16px;
 }
 
-.register-form .input-error.invalid {
+.register-form .input-status.invalid {
     color: red;
     font-size: 12px;
     display: block;
     min-height: 16px;
 }
-.register-form .input-error.valid {
+.register-form .input-status.valid {
     color: green;
     font-size: 12px;
     display: block;

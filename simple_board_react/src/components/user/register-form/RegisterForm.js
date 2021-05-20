@@ -5,9 +5,9 @@ export default class RegisterForm extends Component {
 
     checkIdValidation (e) {
         const regExp = /^[a-zA-Z]/;
-        const $inputError = document.querySelector("#id-input-error");
-        $inputError.classList.remove("valid");
-        $inputError.classList.add("invalid");
+        const $inputStatus = document.querySelector("#id-input-status");
+        $inputStatus.classList.remove("valid");
+        $inputStatus.classList.add("invalid");
         let result;
 
         if (!e.target.value) {
@@ -18,52 +18,54 @@ export default class RegisterForm extends Component {
             result = "ID must use 4 ~ 15 words";
         } else {
             result = "OK";
-            $inputError.classList.remove("invalid");
-            $inputError.classList.add("valid");
+            $inputStatus.classList.remove("invalid");
+            $inputStatus.classList.add("valid");
         }
 
-        $inputError.textContent = result;
+        $inputStatus.textContent = result;
     }
 
     checkPasswordValidation(e) {
         const regExp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]/;
-        const $inputError = document.querySelector("#password-input-error");
-        $inputError.classList.remove("valid");
-        $inputError.classList.add("invalid");
+        const $inputStatus = document.querySelector("#password-input-status");
+        $inputStatus.classList.remove("valid");
+        $inputStatus.classList.add("invalid");
         let result;
 
         if (!e.target.value) {
             result = "Please enter Password";
+            document.querySelector("#user-password-check-input").setAttribute("disabled", "disabled");
         } else if (!regExp.test(e.target.value)) {
             result = "Password must contain 1 alphabet, 1 number and 1 special letter";
         } else if (e.target.value.length < 4 || e.target.value.length > 15) {
             result = "Password must use 4 ~ 15 words";
         } else {
             result = "OK";
-            $inputError.classList.remove("invalid");
-            $inputError.classList.add("valid");
+            $inputStatus.classList.remove("invalid");
+            $inputStatus.classList.add("valid");
+            document.querySelector("#user-password-check-input").removeAttribute("disabled");
         }
 
-        $inputError.textContent = result;
+        $inputStatus.textContent = result;
     }
 
     checkPasswordIsSame(e) {
         const $password = document.querySelector("#user-password-input");
-        const $inputError = document.querySelector("#password-check-input-error");
-        $inputError.classList.remove("valid");
-        $inputError.classList.add("invalid");
+        const $inputStatus = document.querySelector("#password-check-input-status");
+        $inputStatus.classList.remove("valid");
+        $inputStatus.classList.add("invalid");
         let result;
 
         if (e.target.value !== $password.value) {
             result = "Check password again";
         } else {
             result = "OK";
-            $inputError.classList.remove("invalid");
-            $inputError.classList.add("valid");
+            $inputStatus.classList.remove("invalid");
+            $inputStatus.classList.add("valid");
         }
 
 
-        $inputError.textContent = result;
+        $inputStatus.textContent = result;
     }
 
     render() {
@@ -76,6 +78,13 @@ export default class RegisterForm extends Component {
             if (!userId || !password || password !== passwordCheck) {
                 return false;
             } else {
+                const allInputStatus = document.querySelectorAll(".input-status");
+                for (const inputStatus of allInputStatus) {
+                    if (!inputStatus.classList.contains("valid")) {
+                        return false;
+                    }
+                }
+
                 addUser({userId, password});
             }
         }
@@ -91,8 +100,8 @@ export default class RegisterForm extends Component {
                         onKeyUp={this.checkIdValidation}
                     />
                     <span
-                        className="input-error"
-                        id="id-input-error"
+                        className="input-status"
+                        id="id-input-status"
                     >
                     </span>
                 </div>
@@ -104,8 +113,8 @@ export default class RegisterForm extends Component {
                         onChange={this.checkPasswordValidation}
                     />
                     <span
-                        className="input-error"
-                        id="password-input-error"
+                        className="input-status"
+                        id="password-input-status"
                     >
                     </span>
                 </div>
@@ -114,11 +123,12 @@ export default class RegisterForm extends Component {
                         id="user-password-check-input"
                         type="password"
                         placeholder="PASSWORD CHECK"
+                        disabled
                         onChange={this.checkPasswordIsSame}
                     />
                     <span
-                        className="input-error"
-                        id="password-check-input-error"
+                        className="input-status"
+                        id="password-check-input-status"
                     >
                     </span>
                 </div>
