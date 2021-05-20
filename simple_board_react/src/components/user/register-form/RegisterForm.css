@@ -39,3 +39,23 @@
     border: 2px solid black;
     cursor: pointer;
 }
+
+.register-form .input-error {
+    color: black;
+    font-size: 12px;
+    display: block;
+    min-height: 16px;
+}
+
+.register-form .input-error.invalid {
+    color: red;
+    font-size: 12px;
+    display: block;
+    min-height: 16px;
+}
+.register-form .input-error.valid {
+    color: green;
+    font-size: 12px;
+    display: block;
+    min-height: 16px;
+}
