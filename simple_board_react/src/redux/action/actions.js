@@ -8,6 +8,7 @@ export const SPINNING_ON = 'SPINNING_ON';
 export const SPINNING_OFF = 'SPINNING_OFF';
 export const MODAL_SHOW = 'MODAL_SHOW';
 export const MODAL_HIDE = 'MODAL_HIDE';
+export const SET_LOGIN_STATUS = 'SET_LOGIN_STATUS';
 
 export function calculatePaginationAction(totalCount) {
     return {type: CALCULATE_PAGINATION, totalCount};
@@ -47,4 +48,8 @@ export function startSpinningAction() {
 
 export function stopSpinningAction() {
     return {type: SPINNING_OFF};
+}
+
+export function setLoginStatus(loginStatus) {
+    return {type:SET_LOGIN_STATUS, loginStatus};
 }

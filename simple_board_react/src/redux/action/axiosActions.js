@@ -2,7 +2,7 @@ import axios from "axios";
 import {
     calculatePaginationAction,
     getArticlesAction, modalShow,
-    movePageAction, startSpinningAction, stopSpinningAction,
+    movePageAction, setLoginStatus, startSpinningAction, stopSpinningAction,
     updateArticleViewAction
 } from "./actions";
 
@@ -156,6 +156,33 @@ export function login(user) {
                 modal.link = "/";
             }
             dispatch(modalShow(modal));
+        }
+
+        axiosAction(dispatch, axiosParam, callback);
+    }
+}
+
+export function checkLogin() {
+    console.log("check login!!");
+    return function(dispatch) {
+        const axiosParam = {
+            url: '/user/checkLogin',
+            method: 'get',
+            dataType: 'json'
+        };
+        const callback = (response) => {
+            let loginStatus;
+            if (response.data.loginId) {
+                loginStatus = {
+                    isLogin: true,
+                    loginId: response.data.loginId
+                }
+            } else {
+                loginStatus = {
+                    isLogin: false
+                }
+            }
+            dispatch(setLoginStatus(loginStatus));
         }
 
         axiosAction(dispatch, axiosParam, callback);

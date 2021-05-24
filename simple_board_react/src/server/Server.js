@@ -4,12 +4,13 @@ const express = require('express');
 const app = express();
 // port 지정
 const port = '8080';
-
+// cors 사용
 // session 사용 설정
 const session = require('express-session');
+// session 저장소 (fileStore)
 app.use(session({
     saveUninitialized: true,
-    resave: true,
+    resave: false,
     secret: 'session test'
 }));
 

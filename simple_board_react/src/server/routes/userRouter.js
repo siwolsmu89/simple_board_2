@@ -46,13 +46,22 @@ module.exports = () => {
                     result: "success",
                     dialog: "Login Success"
                 });
-                session.loginId = result[0].loginId;
+                session.loginId = result[0].userId;
+                session.save();
             } else {
                 res.send({
                     result: "error",
                     dialog: "Login failed :: Check your ID or password"
                 });
             }
+        });
+    });
+
+    router.get("/checkLogin", function(req, res) {
+       console.log("check login");
+        session = req.session;
+        res.send({
+            loginId: session.loginId
         });
     });
 

@@ -2,6 +2,7 @@ import spinning from "./spinnerReducer";
 import articles from "./articleReducer";
 import pagination from "./paginationReducer";
 import modal from "./modalReducer";
+import loginStatus from "./loginReducer";
 
 const initialState = {
     spinning: false,
@@ -12,6 +13,9 @@ const initialState = {
     pagination: {
         currentPage: 1,
         lastPage: 1
+    },
+    loginStatus: {
+        isLogin: false
     }
 };
 
@@ -20,6 +24,7 @@ export default function reducer(state=initialState, action) {
         spinning: spinning(state, action),
         articles: articles(state, action),
         pagination: pagination(state, action),
-        modal: modal(state, action)
+        modal: modal(state, action),
+        loginStatus: loginStatus(state, action)
     };
 }
