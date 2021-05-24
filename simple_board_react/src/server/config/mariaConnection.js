@@ -3,9 +3,9 @@ module.exports = () => {
     const dbInfo = {
         host : 'localhost',
         port : 3306,
-        database : 'todolist',
+        database : 'simple_board_01',
         user : 'root',
-        password : 'spring1234'
+        password : '1234'
     }
 
     return mariaDB.createConnection(dbInfo);

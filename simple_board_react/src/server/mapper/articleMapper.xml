@@ -15,7 +15,7 @@
                     `createdDate`,
                     `lastUpdatedDate`
                 FROM
-                    simple_board_1
+                    articles
             ) A
         WHERE A.rownum BETWEEN CAST(#{articleStart} AS INTEGER) AND CAST(#{articleEnd} AS INTEGER)
     </select>
@@ -23,33 +23,33 @@
         SELECT
             COUNT(`no`) as totalCount
         FROM
-            simple_board_1
+            articles
     </select>
     <select id="getArticleByNo">
         SELECT *
-        FROM simple_board_1
+        FROM articles
         WHERE `no` = #{no}
     </select>
     <update id="updateArticleView">
-        UPDATE simple_board_1
+        UPDATE articles
         SET
             views = views + 1
         WHERE `no` = #{no}
     </update>
     <insert id="addNewArticle">
-        INSERT INTO simple_board_1
+        INSERT INTO articles
             ( `title`, `text` )
         VALUES
             ( #{title}, #{text})
         RETURNING *
     </insert>
     <delete id="deleteArticle">
-        DELETE FROM simple_board_1
+        DELETE FROM articles
         WHERE `no` = #{no}
         RETURNING *
     </delete>
     <update id="editArticle">
-        UPDATE simple_board_1
+        UPDATE articles
         SET
             `title` = #{title},
             `text` = #{text},
