@@ -5,6 +5,14 @@ const app = express();
 // port 지정
 const port = '8080';
 
+// session 사용 설정
+const session = require('express-session');
+app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: 'session test'
+}));
+
 // JSON 사용 설정
 app.use(express.json());
 

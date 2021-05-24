@@ -3,6 +3,12 @@ import './LoginForm.css';
 
 export default class LoginForm extends Component {
     render() {
+        const {login} = this.props;
+        let user = {
+            userId: '',
+            password: ''
+        };
+
         return (
             <div className="login-form">
                 <div className="user-id">
@@ -10,6 +16,9 @@ export default class LoginForm extends Component {
                         id="user-id-input"
                         type="text"
                         placeholder="ID"
+                        onChange={(e) => {
+                            user.userId = e.target.value;
+                        }}
                     />
                 </div>
                 <div className="user-password">
@@ -17,10 +26,21 @@ export default class LoginForm extends Component {
                         id="user-password-input"
                         type="password"
                         placeholder="PASSWORD"
+                        onChange={(e) => {
+                            user.password = e.target.value;
+                        }}
                     />
                 </div>
                 <div className="login-form-button">
-                    <button>LOGIN</button>
+                    <button
+                        onClick={() => {
+                            login(user);
+                            document.querySelector("#user-id-input").value = '';
+                            document.querySelector("#user-password-input").value = '';
+                        }}
+                    >
+                        LOGIN
+                    </button>
                 </div>
             </div>
         );

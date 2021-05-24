@@ -4,9 +4,10 @@ import {Route} from "react-router-dom";
 import GuestContainer from "./container/guest-container/GuestContainer";
 import RegisterContainer from "./container/register-container/RegisterContainer";
 import UserContainer from "./container/user-container/UserContainer";
-import {addUser} from "../../redux/action/axiosActions";
+import {addUser, login} from "../../redux/action/axiosActions";
 import RegisterForm from "./register-form/RegisterForm";
 import {modalShow} from "../../redux/action/actions";
+import LoginForm from "./login-form/LoginForm";
 
 class UserApp extends Component {
     render() {
@@ -15,7 +16,16 @@ class UserApp extends Component {
         return (
             <div className="user-app">
                 <Route exact path="/user/">
-                    <GuestContainer />
+                    <UserContainer />
+                </Route>
+                <Route exact path="/user/">
+                    <GuestContainer
+                        loginForm={
+                            <LoginForm
+                                login={(user) => dispatch(login(user))}
+                            />
+                        }
+                    />
                 </Route>
                 <Route exact path="/user/register">
                     <RegisterContainer
@@ -26,9 +36,6 @@ class UserApp extends Component {
                             />
                         }
                     />
-                </Route>
-                <Route exact path="/user/1">
-                    <UserContainer />
                 </Route>
             </div>
         );

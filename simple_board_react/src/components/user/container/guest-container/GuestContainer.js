@@ -5,6 +5,7 @@ import {REGISTER_ICON} from "../../../common/icon-box/IconIndex";
 
 export default class GuestContainer extends Component {
     render() {
+        const {loginForm} = this.props;
         const icons = [REGISTER_ICON];
 
         return (
@@ -15,7 +16,7 @@ export default class GuestContainer extends Component {
                     />
                 </section>
                 <section className="login-form-wrapper">
-                    <LoginForm />
+                    {loginForm}
                 </section>
             </div>
         );

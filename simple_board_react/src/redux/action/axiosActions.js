@@ -137,3 +137,27 @@ export function addUser(user) {
         axiosAction(dispatch, axiosParam, callback);
     }
 }
+
+export function login(user) {
+    console.log("login!!");
+    return function(dispatch) {
+        const axiosParam = {
+            url: '/user/login',
+            method: 'post',
+            dataType: 'json',
+            data: user
+        };
+        const callback = (response) => {
+            const modal = {
+                dialog: response.data.dialog,
+                type: response.data.result
+            }
+            if (response.data.result === 'success') {
+                modal.link = "/";
+            }
+            dispatch(modalShow(modal));
+        }
+
+        axiosAction(dispatch, axiosParam, callback);
+    }
+}
